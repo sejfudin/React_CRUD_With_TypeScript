@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { BASE_URL } from './constants';
 
-axios.defaults.baseURL = BASE_URL;
-//If you are using different URLs, consider removing this line and adding a baseURL in the Axios Config parameter. 
+axios.defaults.baseURL = BASE_URL; 
 
 const useAxios = (axiosParams: AxiosRequestConfig) => {
     const [response, setResponse] = useState<AxiosResponse>();

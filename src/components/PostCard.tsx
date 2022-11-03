@@ -1,31 +1,27 @@
 
 import { Box, Card, CardActions, CardContent, Button, Typography, CardHeader, IconButton } from '@mui/material';
 import { DeleteOutline, MoreVert, ModeEditOutline } from '@mui/icons-material';
-import { Page } from '../pages/Pages';
+import { useNavigate } from 'react-router-dom';
+import { PostCardInterface } from '../utils/interfaces';
 
-interface Props {
-    page: Page
-}
+
+
 var cardStyle = {
     display: 'block',
     transitionDuration: '0.3s',
-    minHeight: '350px'
+    minHeight: '300px'
 }
 
-var buttonStyle = {
-    position: "end",
-}
+export default function PostCard(props: PostCardInterface) {
+    const { title, content, id } = props.post;
 
-export default function PageCard(props: Props) {
+    const navigate = useNavigate();
     return (
-        <Card
-            style={cardStyle}
-            elevation={1}
-        >
+        <Card style={cardStyle} elevation={1}>
             <CardHeader
                 action={
                     <>
-                        <IconButton aria-label="settings" onClick={() => console.log('edit')}>
+                        <IconButton aria-label="settings" onClick={() => navigate(`posts/${id}`)}>
                             <ModeEditOutline />
                         </IconButton>
                         <IconButton aria-label="settings" onClick={() => console.log('delete')}>
@@ -33,18 +29,15 @@ export default function PageCard(props: Props) {
                         </IconButton>
                     </>
                 }
-                title={props.page.title}
+                title={title}
             />
             <CardContent>
                 <Typography
                     variant='body2'
                     color="textSecondary" gutterBottom>
-                    {props.page.content}
+                    {content}
                 </Typography>
             </CardContent>
-            <CardActions>
-                <Button size="small">Edit page</Button>
-            </CardActions>
         </Card>
     );
 }
