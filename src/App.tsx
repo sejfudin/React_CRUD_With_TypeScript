@@ -11,7 +11,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Pages />} />
-        <Route path='/new-page' element={<AddPost />} />
+        <Route path='/new-post' element={<AddPost />} />
         <Route path='/posts/:id' element={<EditPost />} />
 
 

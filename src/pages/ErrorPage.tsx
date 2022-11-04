@@ -3,8 +3,13 @@ import { purple } from '@mui/material/colors';
 import { useNavigate } from 'react-router-dom';
 
 const primary = purple[500]; // #f44336
+interface Props {
+    message: string
+}
 
-export default function ErrorPage() {
+export default function ErrorPage(props: Props) {
+
+    const {message}= props;
     const navigate = useNavigate();
     return (
         <Box
@@ -21,7 +26,7 @@ export default function ErrorPage() {
                 404
             </Typography>
             <Typography variant="h6" style={{ color: 'white' }}>
-                The page you’re looking for doesn’t exist.
+                Message: {message}
             </Typography>
             <Button
                 variant="contained"
